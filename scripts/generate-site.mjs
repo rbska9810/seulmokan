@@ -51,7 +51,7 @@ const tools=[
 ['dice-coin','주사위·동전 던지기','기타 유틸리티','주사위를 굴리거나 동전을 던져 무작위 결과를 얻습니다.'],
 ['stopwatch','스톱워치·랩 타이머','기타 유틸리티','경과 시간을 측정하고 구간별 랩 기록을 남깁니다.'],
 ['unix-timestamp-converter','Unix 타임스탬프 변환기','기타 유틸리티','Unix 초·밀리초와 읽을 수 있는 날짜를 상호 변환합니다.']];
-const base='https://rbska9810.github.io/seulmokan/';
+const base='https://www.seulmokan.com/';
 const schemaFor=(title,url,desc,cat)=>({'@context':'https://schema.org','@graph':[{'@type':'WebApplication',name:title,url,description:desc,applicationCategory:'UtilitiesApplication',operatingSystem:'Any',offers:{'@type':'Offer',price:'0',priceCurrency:'KRW'},inLanguage:'ko-KR'},{'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'홈',item:base},{'@type':'ListItem',position:2,name:cat,item:base+'#tools'},{'@type':'ListItem',position:3,name:title,item:url}]},{'@type':'FAQPage',mainEntity:[{'@type':'Question',name:'무료로 사용할 수 있나요?',acceptedAnswer:{'@type':'Answer',text:'회원가입 없이 무료로 사용할 수 있습니다.'}},{'@type':'Question',name:'입력한 내용이 저장되나요?',acceptedAnswer:{'@type':'Answer',text:'브라우저에서 처리되는 도구는 입력 내용과 결과를 쓸모칸 서버에 저장하지 않습니다.'}},{'@type':'Question',name:'결과를 그대로 사용해도 되나요?',acceptedAnswer:{'@type':'Answer',text:'일반 변환 결과는 바로 활용할 수 있습니다. 급여, 금융, 건강 관련 계산은 참고용 예상치이므로 공식 자료와 함께 확인하세요.'}}]}]});
 const notes={
   'salary-calculator':'<h2>2026년 계산 기준</h2><p>국민연금 근로자 부담률 4.75%, 건강보험 3.595%, 장기요양 약 0.4724%, 고용보험 0.9%를 반영합니다. 소득세와 지방소득세는 개인 조건에 따라 달라 직접 입력하도록 했습니다. <a href="https://www.nps.or.kr/pnsinfo/ntpsklg/getOHAF0095M0.do" target="_blank" rel="noopener">국민연금공단 기준 확인</a></p>',
