@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>쓸모칸 — 무료 온라인 유틸리티 도구 50가지</title>
+  <meta name="description" content="설치 없이 바로 쓰는 무료 온라인 유틸리티 50가지. CSS 생성기, 글자수 계산기, JSON 포맷터, D-Day 계산기, QR코드 생성기 등을 한곳에서 이용하세요.">
+  <meta name="keywords" content="온라인 도구, 무료 유틸리티, 글자수 계산기, CSS 생성기, JSON 포맷터, D-Day 계산기, QR코드 생성기">
+  <meta name="author" content="SEULMOKAN">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://rbska9810.github.io/seulmokan/">
+  <link rel="alternate" hreflang="ko-KR" href="https://rbska9810.github.io/seulmokan/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="쓸모칸">
+  <meta property="og:title" content="쓸모칸 — 무료 온라인 유틸리티 도구 50가지">
+  <meta property="og:description" content="브라우저에서 빠르고 안전하게 사용하는 실용 도구 50가지를 만나보세요.">
+  <meta property="og:url" content="https://rbska9810.github.io/seulmokan/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="쓸모칸 — 무료 온라인 유틸리티 도구 50가지">
+  <meta name="twitter:description" content="설치 없이 바로 쓰는 무료 온라인 도구 모음">
+
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('seulmokan-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) document.documentElement.classList.add('dark');
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'] },
+          colors: { brand: { 50:'#eef2ff', 100:'#e0e7ff', 500:'#6366f1', 600:'#4f46e5', 700:'#4338ca' } },
+          boxShadow: { soft: '0 12px 32px -16px rgb(15 23 42 / 0.22)' }
+        }
+      }
+    };
+  </script>
+  <style>
+    [data-tool][hidden], [data-category-section][hidden] { display: none !important; }
+    .tool-card { transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+    .tool-card:hover { transform: translateY(-2px); }
+    .ad-slot { background-image: repeating-linear-gradient(135deg, transparent, transparent 8px, rgb(148 163 184 / .08) 8px, rgb(148 163 184 / .08) 16px); }
+    .kbd-focus:focus-visible { outline: 3px solid rgb(99 102 241 / .35); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "쓸모칸",
+    "alternateName": "SEULMOKAN",
+    "url": "https://rbska9810.github.io/seulmokan/",
+    "description": "설치 없이 브라우저에서 사용하는 무료 온라인 유틸리티 도구 모음",
+    "inLanguage": "ko-KR",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://rbska9810.github.io/seulmokan/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "무료 온라인 유틸리티 50가지",
+    "numberOfItems": 50,
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"px-rem 변환기","url":"https://rbska9810.github.io/seulmokan/tools/px-rem-converter/"},
+      {"@type":"ListItem","position":2,"name":"CSS 그라데이션 생성기","url":"https://rbska9810.github.io/seulmokan/tools/css-gradient-generator/"},
+      {"@type":"ListItem","position":3,"name":"CSS 박스 섀도우 생성기","url":"https://rbska9810.github.io/seulmokan/tools/box-shadow-generator/"},
+      {"@type":"ListItem","position":4,"name":"HEX·RGB·HSL 변환기","url":"https://rbska9810.github.io/seulmokan/tools/color-converter/"},
+      {"@type":"ListItem","position":5,"name":"메타태그 미리보기","url":"https://rbska9810.github.io/seulmokan/tools/meta-tag-preview/"},
+      {"@type":"ListItem","position":6,"name":"CSS Border Radius 생성기","url":"https://rbska9810.github.io/seulmokan/tools/border-radius-generator/"},
+      {"@type":"ListItem","position":7,"name":"Flexbox 플레이그라운드","url":"https://rbska9810.github.io/seulmokan/tools/flexbox-playground/"},
+      {"@type":"ListItem","position":8,"name":"CSS Clamp 계산기","url":"https://rbska9810.github.io/seulmokan/tools/css-clamp-calculator/"},
+      {"@type":"ListItem","position":9,"name":"Base64 이미지 변환기","url":"https://rbska9810.github.io/seulmokan/tools/image-base64-converter/"},
+      {"@type":"ListItem","position":10,"name":"SVG 최적화 도우미","url":"https://rbska9810.github.io/seulmokan/tools/svg-optimizer/"},
+      {"@type":"ListItem","position":11,"name":"실시간 글자수·바이트 계산기","url":"https://rbska9810.github.io/seulmokan/tools/character-byte-counter/"},
+      {"@type":"ListItem","position":12,"name":"줄바꿈·공백 제거기","url":"https://rbska9810.github.io/seulmokan/tools/whitespace-remover/"},
+      {"@type":"ListItem","position":13,"name":"대소문자 변환기","url":"https://rbska9810.github.io/seulmokan/tools/case-converter/"},
+      {"@type":"ListItem","position":14,"name":"중복 줄 제거기","url":"https://rbska9810.github.io/seulmokan/tools/duplicate-line-remover/"},
+      {"@type":"ListItem","position":15,"name":"JSON 포맷터·검증기","url":"https://rbska9810.github.io/seulmokan/tools/json-formatter/"},
+      {"@type":"ListItem","position":16,"name":"URL 인코더·디코더","url":"https://rbska9810.github.io/seulmokan/tools/url-encoder-decoder/"},
+      {"@type":"ListItem","position":17,"name":"HTML 엔티티 변환기","url":"https://rbska9810.github.io/seulmokan/tools/html-entity-converter/"},
+      {"@type":"ListItem","position":18,"name":"Lorem Ipsum 생성기","url":"https://rbska9810.github.io/seulmokan/tools/lorem-ipsum-generator/"},
+      {"@type":"ListItem","position":19,"name":"텍스트 정렬·역순 변환기","url":"https://rbska9810.github.io/seulmokan/tools/text-sorter/"},
+      {"@type":"ListItem","position":20,"name":"슬러그 생성기","url":"https://rbska9810.github.io/seulmokan/tools/slug-generator/"},
+      {"@type":"ListItem","position":21,"name":"마크다운 미리보기","url":"https://rbska9810.github.io/seulmokan/tools/markdown-preview/"},
+      {"@type":"ListItem","position":22,"name":"CSV·JSON 변환기","url":"https://rbska9810.github.io/seulmokan/tools/csv-json-converter/"},
+      {"@type":"ListItem","position":23,"name":"문장·단어 수 계산기","url":"https://rbska9810.github.io/seulmokan/tools/word-sentence-counter/"},
+      {"@type":"ListItem","position":24,"name":"텍스트 차이 비교기","url":"https://rbska9810.github.io/seulmokan/tools/text-diff-checker/"},
+      {"@type":"ListItem","position":25,"name":"맞춤법 검사 전처리기","url":"https://rbska9810.github.io/seulmokan/tools/korean-text-cleaner/"},
+      {"@type":"ListItem","position":26,"name":"D-Day 계산기","url":"https://rbska9810.github.io/seulmokan/tools/dday-calculator/"},
+      {"@type":"ListItem","position":27,"name":"만 나이 계산기","url":"https://rbska9810.github.io/seulmokan/tools/korean-age-calculator/"},
+      {"@type":"ListItem","position":28,"name":"퍼센트·할인율 계산기","url":"https://rbska9810.github.io/seulmokan/tools/percentage-calculator/"},
+      {"@type":"ListItem","position":29,"name":"연봉 실수령액 계산기","url":"https://rbska9810.github.io/seulmokan/tools/salary-calculator/"},
+      {"@type":"ListItem","position":30,"name":"QR코드 생성기","url":"https://rbska9810.github.io/seulmokan/tools/qr-code-generator/"},
+      {"@type":"ListItem","position":31,"name":"부가세 계산기","url":"https://rbska9810.github.io/seulmokan/tools/vat-calculator/"},
+      {"@type":"ListItem","position":32,"name":"대출 이자 계산기","url":"https://rbska9810.github.io/seulmokan/tools/loan-calculator/"},
+      {"@type":"ListItem","position":33,"name":"복리 계산기","url":"https://rbska9810.github.io/seulmokan/tools/compound-interest-calculator/"},
+      {"@type":"ListItem","position":34,"name":"시급·월급 변환기","url":"https://rbska9810.github.io/seulmokan/tools/wage-converter/"},
+      {"@type":"ListItem","position":35,"name":"BMI 계산기","url":"https://rbska9810.github.io/seulmokan/tools/bmi-calculator/"},
+      {"@type":"ListItem","position":36,"name":"칼로리 권장량 계산기","url":"https://rbska9810.github.io/seulmokan/tools/calorie-calculator/"},
+      {"@type":"ListItem","position":37,"name":"날짜·기간 계산기","url":"https://rbska9810.github.io/seulmokan/tools/date-calculator/"},
+      {"@type":"ListItem","position":38,"name":"세계 시간 변환기","url":"https://rbska9810.github.io/seulmokan/tools/timezone-converter/"},
+      {"@type":"ListItem","position":39,"name":"퇴직금 계산기","url":"https://rbska9810.github.io/seulmokan/tools/severance-pay-calculator/"},
+      {"@type":"ListItem","position":40,"name":"평수·제곱미터 변환기","url":"https://rbska9810.github.io/seulmokan/tools/area-converter/"},
+      {"@type":"ListItem","position":41,"name":"내 IP 확인","url":"https://rbska9810.github.io/seulmokan/tools/my-ip/"},
+      {"@type":"ListItem","position":42,"name":"포모도로 집중 타이머","url":"https://rbska9810.github.io/seulmokan/tools/pomodoro-timer/"},
+      {"@type":"ListItem","position":43,"name":"사다리타기","url":"https://rbska9810.github.io/seulmokan/tools/ladder-game/"},
+      {"@type":"ListItem","position":44,"name":"길이·무게 단위 변환기","url":"https://rbska9810.github.io/seulmokan/tools/unit-converter/"},
+      {"@type":"ListItem","position":45,"name":"랜덤 숫자 생성기","url":"https://rbska9810.github.io/seulmokan/tools/random-number-generator/"},
+      {"@type":"ListItem","position":46,"name":"랜덤 비밀번호 생성기","url":"https://rbska9810.github.io/seulmokan/tools/password-generator/"},
+      {"@type":"ListItem","position":47,"name":"룰렛 돌리기","url":"https://rbska9810.github.io/seulmokan/tools/random-wheel/"},
+      {"@type":"ListItem","position":48,"name":"주사위·동전 던지기","url":"https://rbska9810.github.io/seulmokan/tools/dice-coin/"},
+      {"@type":"ListItem","position":49,"name":"스톱워치·랩 타이머","url":"https://rbska9810.github.io/seulmokan/tools/stopwatch/"},
+      {"@type":"ListItem","position":50,"name":"Unix 타임스탬프 변환기","url":"https://rbska9810.github.io/seulmokan/tools/unix-timestamp-converter/"}
+    ]
+  }
+  </script>
+</head>
+
+<body class="min-h-screen bg-slate-50 font-sans text-slate-900 antialiased selection:bg-brand-100 selection:text-brand-700 dark:bg-slate-950 dark:text-slate-100 dark:selection:bg-brand-700 dark:selection:text-white">
+  <a href="#main-content" class="kbd-focus fixed left-4 top-4 z-50 -translate-y-24 rounded-lg bg-slate-950 px-4 py-3 font-semibold text-white transition focus:translate-y-0 dark:bg-white dark:text-slate-950">본문으로 건너뛰기</a>
+
+  <header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl dark:border-slate-800 dark:bg-slate-950/88">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="./" class="kbd-focus flex items-center gap-2 rounded-lg" aria-label="쓸모칸 홈">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-cyan-500 text-lg font-black text-white shadow-lg shadow-indigo-500/20" aria-hidden="true">ㅆ</span>
+        <span class="text-xl font-extrabold tracking-tight">쓸모칸</span>
+        <span class="hidden rounded-full bg-brand-50 px-2 py-1 text-xs font-bold text-brand-700 sm:inline dark:bg-brand-500/15 dark:text-brand-100">50 TOOLS</span>
+      </a>
+
+      <nav class="hidden items-center gap-6 text-sm font-semibold text-slate-600 md:flex dark:text-slate-300" aria-label="주요 메뉴">
+        <a class="hover:text-brand-600 dark:hover:text-brand-400" href="#tools">전체 도구</a>
+        <a class="hover:text-brand-600 dark:hover:text-brand-400" href="#guide">이용 안내</a>
+        <a class="hover:text-brand-600 dark:hover:text-brand-400" href="./about/">소개</a>
+      </nav>
+
+      <button id="theme-toggle" type="button" class="kbd-focus grid h-10 w-10 place-items-center rounded-xl border border-slate-200 bg-white text-lg shadow-sm hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900" aria-label="다크 모드로 전환" aria-pressed="false">
+        <span id="theme-icon" aria-hidden="true">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="relative overflow-hidden border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950" aria-labelledby="hero-title">
+      <div class="pointer-events-none absolute inset-0 opacity-50 dark:opacity-30" aria-hidden="true" style="background-image:radial-gradient(circle at 15% 20%,rgba(99,102,241,.16),transparent 26%),radial-gradient(circle at 85% 15%,rgba(6,182,212,.13),transparent 24%)"></div>
+      <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+        <div class="max-w-3xl">
+          <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 text-sm font-bold text-brand-700 dark:border-brand-500/30 dark:bg-brand-500/10 dark:text-brand-100">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span> 로그인·설치 없이 바로 사용
+          </p>
+          <h1 id="hero-title" class="text-3xl font-black leading-tight tracking-tight sm:text-5xl">필요한 도구를<br class="sm:hidden"> 가장 빠르게.</h1>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg dark:text-slate-300">개발, 문서 작업, 계산, 일상에 필요한 무료 도구 50가지를 한곳에 모았습니다. 입력한 내용은 가능한 한 브라우저 안에서 처리됩니다.</p>
+        </div>
+
+        <div class="mt-8 max-w-3xl">
+          <label for="tool-search" class="sr-only">도구 검색</label>
+          <div class="relative">
+            <span class="pointer-events-none absolute inset-y-0 left-0 grid w-14 place-items-center text-xl text-slate-400" aria-hidden="true">⌕</span>
+            <input id="tool-search" type="search" inputmode="search" autocomplete="off" placeholder="어떤 도구가 필요한가요? 예: 글자수, JSON, 할인율" class="kbd-focus h-16 w-full rounded-2xl border border-slate-300 bg-white pl-14 pr-24 text-base shadow-soft placeholder:text-slate-400 hover:border-slate-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 dark:border-slate-700 dark:bg-slate-900 dark:placeholder:text-slate-500 dark:hover:border-slate-600" aria-describedby="search-status">
+            <kbd class="pointer-events-none absolute right-4 top-1/2 hidden -translate-y-1/2 rounded-md border border-slate-200 bg-slate-50 px-2 py-1 text-xs font-semibold text-slate-400 sm:block dark:border-slate-700 dark:bg-slate-800">Ctrl K</kbd>
+          </div>
+          <p id="search-status" class="mt-3 text-sm text-slate-500 dark:text-slate-400" aria-live="polite">전체 50개 도구를 둘러보세요.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <aside class="ad-slot my-6 flex min-h-24 items-center justify-center rounded-2xl border border-dashed border-slate-300 text-center dark:border-slate-700" aria-label="광고">
+        <div><span class="text-xs font-bold uppercase tracking-[.18em] text-slate-400">Advertisement</span><p class="mt-1 text-xs text-slate-400">상단 반응형 광고 영역 · 970 × 90</p></div>
+        <!-- AdSense 상단 광고 코드를 이 위치에 삽입하세요. -->
+      </aside>
+
+      <section id="tools" class="scroll-mt-24 pb-20 pt-4" aria-labelledby="tools-title">
+        <div class="flex flex-col gap-5 border-b border-slate-200 pb-6 dark:border-slate-800 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p class="text-sm font-bold text-brand-600 dark:text-brand-400">UTILITY DIRECTORY</p>
+            <h2 id="tools-title" class="mt-1 text-2xl font-black tracking-tight sm:text-3xl">전체 도구</h2>
+          </div>
+          <div id="category-filters" class="flex gap-2 overflow-x-auto pb-1" role="group" aria-label="도구 카테고리 필터">
+            <button class="filter-btn kbd-focus shrink-0 rounded-full bg-slate-900 px-4 py-2 text-sm font-bold text-white dark:bg-white dark:text-slate-950" type="button" data-filter="all" aria-pressed="true">전체 <span class="opacity-60">50</span></button>
+            <button class="filter-btn kbd-focus shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300" type="button" data-filter="frontend" aria-pressed="false">퍼블리싱·개발 <span class="opacity-60">10</span></button>
+            <button class="filter-btn kbd-focus shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300" type="button" data-filter="text" aria-pressed="false">텍스트·문서 <span class="opacity-60">15</span></button>
+            <button class="filter-btn kbd-focus shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300" type="button" data-filter="office" aria-pressed="false">일상·사무 <span class="opacity-60">15</span></button>
+            <button class="filter-btn kbd-focus shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300" type="button" data-filter="utility" aria-pressed="false">기타 <span class="opacity-60">10</span></button>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-8 xl:grid-cols-[minmax(0,1fr)_300px]">
+          <div id="tool-directory" class="space-y-12">
+            <section data-category-section="frontend" aria-labelledby="category-frontend">
+              <div class="mb-5 flex items-center gap-3">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-indigo-100 font-black text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300">&lt;/&gt;</span>
+                <div><h3 id="category-frontend" class="text-xl font-extrabold">퍼블리싱·프론트엔드</h3><p class="text-sm text-slate-500 dark:text-slate-400">CSS, 색상, 메타데이터를 빠르게 만들고 변환합니다.</p></div>
+              </div>
+              <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <a data-tool data-category="frontend" data-keywords="px rem em css 단위 폰트 픽셀" href="./tools/px-rem-converter/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">01</span><h4 class="mt-3 font-extrabold">px ↔ rem 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">기준 폰트에 맞춰 CSS 단위를 즉시 변환합니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 group-hover:translate-x-1 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="css gradient 그라데이션 background 배경" href="./tools/css-gradient-generator/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">02</span><h4 class="mt-3 font-extrabold">CSS 그라데이션 생성기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">색상과 각도를 조절하고 CSS 코드를 복사합니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="css box shadow 그림자 박스 섀도우" href="./tools/box-shadow-generator/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">03</span><h4 class="mt-3 font-extrabold">CSS 박스 섀도우 생성기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">그림자를 눈으로 확인하며 세밀하게 조절합니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="hex rgb hsl 색상 컬러 color 변환" href="./tools/color-converter/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">04</span><h4 class="mt-3 font-extrabold">HEX · RGB · HSL 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">웹 색상 코드를 원하는 형식으로 바꿉니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="meta tag seo 메타태그 검색 소셜 미리보기 og" href="./tools/meta-tag-preview/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">05</span><h4 class="mt-3 font-extrabold">메타태그 미리보기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">구글 검색과 소셜 공유 화면을 미리 확인합니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="css border radius 둥근 모서리 라운드" href="./tools/border-radius-generator/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">06</span><h4 class="mt-3 font-extrabold">Border Radius 생성기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">모서리 곡률을 조절하고 CSS를 생성합니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="css flex flexbox 레이아웃 정렬" href="./tools/flexbox-playground/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">07</span><h4 class="mt-3 font-extrabold">Flexbox 플레이그라운드</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">정렬 옵션을 실험하고 레이아웃 코드를 얻습니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="css clamp 반응형 폰트 vw 계산" href="./tools/css-clamp-calculator/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">08</span><h4 class="mt-3 font-extrabold">CSS Clamp 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">반응형 크기에 맞는 clamp 값을 계산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="image base64 이미지 인코딩 data uri" href="./tools/image-base64-converter/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">09</span><h4 class="mt-3 font-extrabold">Base64 이미지 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">이미지를 Data URI로 브라우저에서 변환합니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+                <a data-tool data-category="frontend" data-keywords="svg optimize 최적화 압축 벡터" href="./tools/svg-optimizer/" class="tool-card kbd-focus group rounded-2xl border border-indigo-200/70 bg-white p-5 shadow-sm hover:border-indigo-400 hover:shadow-soft dark:border-indigo-500/20 dark:bg-slate-900"><span class="text-xs font-black text-indigo-500">10</span><h4 class="mt-3 font-extrabold">SVG 최적화 도우미</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">불필요한 SVG 코드를 정리하고 용량을 줄입니다.</p><span class="mt-4 inline-block text-sm font-bold text-indigo-600 dark:text-indigo-400">열기 →</span></a>
+              </div>
+            </section>
+
+            <section data-category-section="text" aria-labelledby="category-text">
+              <div class="mb-5 flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-cyan-100 font-black text-cyan-700 dark:bg-cyan-500/15 dark:text-cyan-300">Aa</span><div><h3 id="category-text" class="text-xl font-extrabold">텍스트·문서 가공</h3><p class="text-sm text-slate-500 dark:text-slate-400">복사한 텍스트와 데이터를 깔끔하고 정확하게 다듬습니다.</p></div></div>
+              <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <a data-tool data-category="text" data-keywords="글자수 문자수 byte 바이트 원고지 공백 포함" href="./tools/character-byte-counter/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">11</span><h4 class="mt-3 font-extrabold">실시간 글자수·바이트 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">공백 포함·제외 글자수와 UTF-8 바이트를 셉니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="줄바꿈 공백 제거 띄어쓰기 정리 whitespace" href="./tools/whitespace-remover/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">12</span><h4 class="mt-3 font-extrabold">줄바꿈·공백 제거기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">불필요한 빈 줄과 연속 공백을 한 번에 정리합니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="대문자 소문자 uppercase lowercase camel case" href="./tools/case-converter/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">13</span><h4 class="mt-3 font-extrabold">대소문자 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">영문 텍스트를 다양한 표기 방식으로 바꿉니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="중복 줄 행 제거 unique line deduplicate" href="./tools/duplicate-line-remover/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">14</span><h4 class="mt-3 font-extrabold">중복 줄 제거기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">반복되는 행을 제거하고 고유 목록을 만듭니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="json formatter validate 포맷 검증 압축 정렬" href="./tools/json-formatter/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">15</span><h4 class="mt-3 font-extrabold">JSON 포맷터·검증기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">JSON 문법 오류를 찾고 보기 좋게 정렬합니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="url encode decode uri 인코딩 디코딩" href="./tools/url-encoder-decoder/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">16</span><h4 class="mt-3 font-extrabold">URL 인코더·디코더</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">URL 특수문자를 안전한 형식으로 바꾸거나 복원합니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="html entity escape 엔티티 이스케이프 특수문자" href="./tools/html-entity-converter/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">17</span><h4 class="mt-3 font-extrabold">HTML 엔티티 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">HTML 특수문자를 엔티티로 변환하거나 복원합니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="lorem ipsum 로렘 입숨 더미 텍스트 문단" href="./tools/lorem-ipsum-generator/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">18</span><h4 class="mt-3 font-extrabold">Lorem Ipsum 생성기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">디자인 시안용 더미 문장과 문단을 만듭니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="텍스트 정렬 역순 가나다 알파벳 sort reverse" href="./tools/text-sorter/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">19</span><h4 class="mt-3 font-extrabold">텍스트 정렬·역순 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">행을 가나다순·숫자순 또는 역순으로 정렬합니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="slug url seo 한글 슬러그 permalink" href="./tools/slug-generator/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">20</span><h4 class="mt-3 font-extrabold">슬러그 생성기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">제목을 검색 친화적인 URL 문자열로 바꿉니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="markdown md 마크다운 preview 미리보기 html" href="./tools/markdown-preview/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">21</span><h4 class="mt-3 font-extrabold">마크다운 미리보기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">마크다운 문서를 작성하며 결과를 바로 확인합니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="csv json excel 데이터 변환 표" href="./tools/csv-json-converter/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">22</span><h4 class="mt-3 font-extrabold">CSV ↔ JSON 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">표 형식 데이터를 CSV와 JSON 사이에서 변환합니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="문장 단어 수 word sentence counter 영어" href="./tools/word-sentence-counter/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">23</span><h4 class="mt-3 font-extrabold">문장·단어 수 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">문장, 단어, 문단 수와 예상 읽기 시간을 셉니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="diff 텍스트 차이 비교 변경 문서" href="./tools/text-diff-checker/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">24</span><h4 class="mt-3 font-extrabold">텍스트 차이 비교기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">두 문서에서 추가·삭제·변경된 내용을 찾습니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+                <a data-tool data-category="text" data-keywords="한글 맞춤법 검사 전처리 문장부호 교정" href="./tools/korean-text-cleaner/" class="tool-card kbd-focus group rounded-2xl border border-cyan-200/70 bg-white p-5 shadow-sm hover:border-cyan-400 hover:shadow-soft dark:border-cyan-500/20 dark:bg-slate-900"><span class="text-xs font-black text-cyan-600">25</span><h4 class="mt-3 font-extrabold">맞춤법 검사 전처리기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">검사 전에 문장부호와 잘못된 간격을 정돈합니다.</p><span class="mt-4 inline-block text-sm font-bold text-cyan-700 dark:text-cyan-400">열기 →</span></a>
+              </div>
+            </section>
+
+            <section data-category-section="office" aria-labelledby="category-office">
+              <div class="mb-5 flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-emerald-100 font-black text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">%</span><div><h3 id="category-office" class="text-xl font-extrabold">일상·사무용 계산</h3><p class="text-sm text-slate-500 dark:text-slate-400">날짜, 급여, 금융, 건강 관련 수치를 간편하게 계산합니다.</p></div></div>
+              <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <a data-tool data-category="office" data-keywords="d-day 디데이 날짜 기념일 남은 날 계산" href="./tools/dday-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">26</span><h4 class="mt-3 font-extrabold">D-Day 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">목표일까지 남은 날짜와 지난 날짜를 계산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="만 나이 한국 나이 생년월일 계산" href="./tools/korean-age-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">27</span><h4 class="mt-3 font-extrabold">만 나이 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">생년월일을 기준으로 현재 만 나이를 구합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="퍼센트 할인율 세일 비율 증감 계산" href="./tools/percentage-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">28</span><h4 class="mt-3 font-extrabold">퍼센트·할인율 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">비율, 증감률, 할인 금액을 빠르게 계산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="연봉 실수령액 월급 세금 4대보험 급여" href="./tools/salary-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">29</span><h4 class="mt-3 font-extrabold">연봉 실수령액 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">연봉 기준 월 예상 실수령액을 확인합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="qr code 큐알 링크 와이파이 명함 생성" href="./tools/qr-code-generator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">30</span><h4 class="mt-3 font-extrabold">QR코드 생성기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">URL과 텍스트를 스캔 가능한 QR코드로 만듭니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="부가세 vat 공급가액 세액 합계 계산" href="./tools/vat-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">31</span><h4 class="mt-3 font-extrabold">부가세 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">합계에서 공급가액과 부가세를 나누어 계산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="대출 이자 원리금 균등 상환 금리" href="./tools/loan-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">32</span><h4 class="mt-3 font-extrabold">대출 이자 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">상환 방식별 월 납입금과 총이자를 계산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="복리 적금 예금 수익 투자 이자" href="./tools/compound-interest-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">33</span><h4 class="mt-3 font-extrabold">복리 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">기간과 수익률에 따른 복리 결과를 계산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="시급 월급 연봉 일급 주급 근무시간" href="./tools/wage-converter/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">34</span><h4 class="mt-3 font-extrabold">시급·월급 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">근무시간을 반영해 시급과 월급을 환산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="bmi 체질량 지수 키 몸무게 비만" href="./tools/bmi-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">35</span><h4 class="mt-3 font-extrabold">BMI 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">키와 몸무게로 체질량지수와 범위를 확인합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="칼로리 권장량 기초대사량 tdee bmr 운동" href="./tools/calorie-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">36</span><h4 class="mt-3 font-extrabold">칼로리 권장량 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">활동량에 따른 하루 예상 에너지 필요량을 구합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="날짜 기간 일수 영업일 더하기 빼기 계산" href="./tools/date-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">37</span><h4 class="mt-3 font-extrabold">날짜·기간 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">두 날짜 사이의 기간과 날짜 더하기를 계산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="세계 시간 시차 타임존 timezone 해외 회의" href="./tools/timezone-converter/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">38</span><h4 class="mt-3 font-extrabold">세계 시간 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">도시별 시간을 비교해 해외 일정을 맞춥니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="퇴직금 퇴직 급여 평균임금 근속" href="./tools/severance-pay-calculator/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">39</span><h4 class="mt-3 font-extrabold">퇴직금 계산기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">재직기간과 평균임금으로 예상 퇴직금을 구합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+                <a data-tool data-category="office" data-keywords="평수 제곱미터 m2 아파트 면적 변환" href="./tools/area-converter/" class="tool-card kbd-focus group rounded-2xl border border-emerald-200/70 bg-white p-5 shadow-sm hover:border-emerald-400 hover:shadow-soft dark:border-emerald-500/20 dark:bg-slate-900"><span class="text-xs font-black text-emerald-600">40</span><h4 class="mt-3 font-extrabold">평수·제곱미터 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">평과 ㎡ 단위를 양방향으로 즉시 환산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-emerald-700 dark:text-emerald-400">열기 →</span></a>
+              </div>
+            </section>
+
+            <section data-category-section="utility" aria-labelledby="category-utility">
+              <div class="mb-5 flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-amber-100 font-black text-amber-700 dark:bg-amber-500/15 dark:text-amber-300">+</span><div><h3 id="category-utility" class="text-xl font-extrabold">기타 유틸리티</h3><p class="text-sm text-slate-500 dark:text-slate-400">집중, 추첨, 변환처럼 자주 필요한 작은 기능을 제공합니다.</p></div></div>
+              <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <a data-tool data-category="utility" data-keywords="내 ip 아이피 주소 확인 네트워크 ipv4 ipv6" href="./tools/my-ip/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">41</span><h4 class="mt-3 font-extrabold">내 IP 확인</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">현재 접속한 기기의 공인 IP 주소를 확인합니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="포모도로 집중 타이머 pomodoro 공부 업무 휴식" href="./tools/pomodoro-timer/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">42</span><h4 class="mt-3 font-extrabold">포모도로 집중 타이머</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">집중과 휴식 시간을 반복해 업무 흐름을 만듭니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="사다리타기 랜덤 추첨 벌칙 게임 뽑기" href="./tools/ladder-game/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">43</span><h4 class="mt-3 font-extrabold">사다리타기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">참가자와 결과를 입력해 공정하게 연결합니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="단위 변환 길이 무게 온도 속도 unit converter" href="./tools/unit-converter/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">44</span><h4 class="mt-3 font-extrabold">길이·무게 단위 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">길이, 무게, 온도 등 주요 단위를 환산합니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="랜덤 숫자 난수 번호 추첨 로또 random" href="./tools/random-number-generator/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">45</span><h4 class="mt-3 font-extrabold">랜덤 숫자 생성기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">범위와 개수를 정해 중복 없는 숫자를 뽑습니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="랜덤 비밀번호 password 보안 암호 생성" href="./tools/password-generator/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">46</span><h4 class="mt-3 font-extrabold">랜덤 비밀번호 생성기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">조건에 맞는 강력한 비밀번호를 기기에서 만듭니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="룰렛 돌리기 원판 랜덤 추첨 뽑기" href="./tools/random-wheel/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">47</span><h4 class="mt-3 font-extrabold">룰렛 돌리기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">후보를 등록하고 룰렛으로 하나를 선택합니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="주사위 동전 던지기 앞면 뒷면 dice coin" href="./tools/dice-coin/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">48</span><h4 class="mt-3 font-extrabold">주사위·동전 던지기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">주사위 굴리기와 동전 던지기를 간단히 실행합니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="스톱워치 랩 타이머 초시계 기록 stopwatch" href="./tools/stopwatch/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">49</span><h4 class="mt-3 font-extrabold">스톱워치·랩 타이머</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">시간을 측정하고 구간별 랩 기록을 남깁니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+                <a data-tool data-category="utility" data-keywords="unix timestamp 타임스탬프 epoch 날짜 시간 변환" href="./tools/unix-timestamp-converter/" class="tool-card kbd-focus group rounded-2xl border border-amber-200/70 bg-white p-5 shadow-sm hover:border-amber-400 hover:shadow-soft dark:border-amber-500/20 dark:bg-slate-900"><span class="text-xs font-black text-amber-600">50</span><h4 class="mt-3 font-extrabold">Unix 타임스탬프 변환기</h4><p class="mt-1 text-sm leading-6 text-slate-500 dark:text-slate-400">Epoch 시간과 읽을 수 있는 날짜를 상호 변환합니다.</p><span class="mt-4 inline-block text-sm font-bold text-amber-700 dark:text-amber-400">열기 →</span></a>
+              </div>
+            </section>
+
+            <div id="empty-state" hidden class="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center dark:border-slate-700 dark:bg-slate-900">
+              <div class="text-4xl" aria-hidden="true">⌕</div><h3 class="mt-4 text-lg font-extrabold">검색 결과가 없습니다</h3><p class="mt-2 text-slate-500 dark:text-slate-400">다른 키워드로 찾아보세요. 예: 텍스트, 날짜, CSS</p><button id="reset-search" type="button" class="kbd-focus mt-5 rounded-xl bg-brand-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-brand-700">검색 초기화</button>
+            </div>
+          </div>
+
+          <aside class="hidden xl:block" aria-label="사이드바">
+            <div class="sticky top-24 space-y-5">
+              <div class="ad-slot flex min-h-[600px] items-center justify-center rounded-2xl border border-dashed border-slate-300 text-center dark:border-slate-700" aria-label="광고"><div><span class="text-xs font-bold uppercase tracking-[.18em] text-slate-400">Advertisement</span><p class="mt-1 text-xs text-slate-400">사이드 광고 · 300 × 600</p></div><!-- AdSense 사이드 광고 코드 --></div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"><p class="font-extrabold">개인정보를 우선합니다</p><p class="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">대부분의 변환과 계산은 서버 전송 없이 사용자의 브라우저에서 처리하도록 설계합니다.</p></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+
+    <section id="guide" class="scroll-mt-24 border-y border-slate-200 bg-white py-16 dark:border-slate-800 dark:bg-slate-900/50" aria-labelledby="guide-title">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl"><p class="text-sm font-bold text-brand-600 dark:text-brand-400">WHY TOOLIO</p><h2 id="guide-title" class="mt-1 text-2xl font-black tracking-tight sm:text-3xl">작지만 확실한 도구</h2><p class="mt-3 leading-7 text-slate-600 dark:text-slate-300">회원가입과 복잡한 설정 없이, 필요한 기능에 바로 집중할 수 있습니다.</p></div>
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <article class="rounded-2xl border border-slate-200 p-6 dark:border-slate-800"><span class="text-2xl" aria-hidden="true">⚡</span><h3 class="mt-4 font-extrabold">빠른 실행</h3><p class="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">가벼운 정적 페이지로 로딩을 줄이고 모바일에서도 즉시 작동합니다.</p></article>
+          <article class="rounded-2xl border border-slate-200 p-6 dark:border-slate-800"><span class="text-2xl" aria-hidden="true">◈</span><h3 class="mt-4 font-extrabold">브라우저 내 처리</h3><p class="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">가능한 기능은 입력 데이터를 외부 서버로 보내지 않고 기기 안에서 처리합니다.</p></article>
+          <article class="rounded-2xl border border-slate-200 p-6 dark:border-slate-800"><span class="text-2xl" aria-hidden="true">↗</span><h3 class="mt-4 font-extrabold">완전 무료</h3><p class="mt-2 text-sm leading-6 text-slate-500 dark:text-slate-400">일상과 업무에 필요한 핵심 기능을 로그인 없이 이용할 수 있습니다.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <aside class="ad-slot flex min-h-24 items-center justify-center rounded-2xl border border-dashed border-slate-300 text-center dark:border-slate-700" aria-label="광고"><div><span class="text-xs font-bold uppercase tracking-[.18em] text-slate-400">Advertisement</span><p class="mt-1 text-xs text-slate-400">하단 반응형 광고 영역</p></div><!-- AdSense 하단 광고 코드 --></aside>
+    </div>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+      <div><a href="./" class="font-black">쓸모칸</a><p class="mt-1 text-sm text-slate-500 dark:text-slate-400">쓸모 있는 도구를 한 칸에</p></div>
+      <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-slate-500 dark:text-slate-400" aria-label="푸터 메뉴"><a class="hover:text-brand-600" href="./about/">서비스 소개</a><a class="hover:text-brand-600" href="./privacy/">개인정보처리방침</a><a class="hover:text-brand-600" href="./terms/">이용약관</a><a class="hover:text-brand-600" href="./contact/">문의</a></nav>
+      <p class="text-sm text-slate-400">© <span id="current-year">2026</span> SEULMOKAN.</p>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const themeButton = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const searchInput = document.getElementById('tool-search');
+      const searchStatus = document.getElementById('search-status');
+      const resetButton = document.getElementById('reset-search');
+      const emptyState = document.getElementById('empty-state');
+      const tools = [...document.querySelectorAll('[data-tool]')];
+      const sections = [...document.querySelectorAll('[data-category-section]')];
+      const filterButtons = [...document.querySelectorAll('[data-filter]')];
+      let activeCategory = 'all';
+
+      function syncThemeButton() {
+        const isDark = root.classList.contains('dark');
+        themeIcon.textContent = isDark ? '☀' : '☾';
+        themeButton.setAttribute('aria-pressed', String(isDark));
+        themeButton.setAttribute('aria-label', isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
+      }
+
+      themeButton.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        localStorage.setItem('seulmokan-theme', root.classList.contains('dark') ? 'dark' : 'light');
+        syncThemeButton();
+      });
+
+      function normalize(value) { return value.toLocaleLowerCase('ko-KR').replace(/\s+/g, ' ').trim(); }
+
+      function updateDirectory() {
+        const query = normalize(searchInput.value);
+        let visibleCount = 0;
+        tools.forEach((tool) => {
+          const categoryMatch = activeCategory === 'all' || tool.dataset.category === activeCategory;
+          const text = normalize(`${tool.textContent} ${tool.dataset.keywords || ''}`);
+          const queryMatch = !query || query.split(' ').every((term) => text.includes(term));
+          tool.hidden = !(categoryMatch && queryMatch);
+          if (!tool.hidden) visibleCount += 1;
+        });
+        sections.forEach((section) => { section.hidden = ![...section.querySelectorAll('[data-tool]')].some((tool) => !tool.hidden); });
+        emptyState.hidden = visibleCount !== 0;
+        searchStatus.textContent = query || activeCategory !== 'all' ? `${visibleCount}개의 도구를 찾았습니다.` : '전체 50개 도구를 둘러보세요.';
+      }
+
+      function setActiveFilter(button) {
+        activeCategory = button.dataset.filter;
+        filterButtons.forEach((item) => {
+          const active = item === button;
+          item.setAttribute('aria-pressed', String(active));
+          item.className = active
+            ? 'filter-btn kbd-focus shrink-0 rounded-full bg-slate-900 px-4 py-2 text-sm font-bold text-white dark:bg-white dark:text-slate-950'
+            : 'filter-btn kbd-focus shrink-0 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 hover:border-brand-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300';
+        });
+        updateDirectory();
+      }
+
+      filterButtons.forEach((button) => button.addEventListener('click', () => setActiveFilter(button)));
+      searchInput.addEventListener('input', updateDirectory);
+      resetButton.addEventListener('click', () => {
+        searchInput.value = '';
+        setActiveFilter(filterButtons[0]);
+        searchInput.focus();
+      });
+      document.addEventListener('keydown', (event) => {
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+          event.preventDefault();
+          searchInput.focus();
+        }
+        if (event.key === 'Escape' && document.activeElement === searchInput) {
+          searchInput.value = '';
+          updateDirectory();
+          searchInput.blur();
+        }
+      });
+
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      syncThemeButton();
+    })();
+  </script>
+</body>
+</html>
