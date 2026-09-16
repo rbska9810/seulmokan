@@ -1,0 +1,4 @@
+scripts/audit-results/
+scripts/release-preview/
+PROJECT_STATUS.md
+scripts/prepare-metadata-release.mjs
