@@ -82,9 +82,13 @@ H['unix-timestamp-converter']=()=>{SM.box.innerHTML=`<div class="grid2">${SM.fie
   const advanced=new Set(['image-compressor','image-cropper','background-remover','psd-image-converter','list-to-excel','work-countdown','nickname-generator','ladder-game','random-number-generator','random-wheel','dice-coin']);
   if(advanced.has(slug)){try{await import('./advanced-tools.js')}catch(e){console.error('고급 도구 모듈을 불러오지 못했습니다.',e)}}
   const games=new Set(['dice-coin','ladder-game','random-number-generator']);
-  if(games.has(slug)){try{await import('./game-tools.js?v=20260913-3')}catch(e){console.error('게임 시각화 모듈을 불러오지 못했습니다.',e)}}
+  if(games.has(slug)){try{await import('./game-tools.js?v=20260918-1')}catch(e){console.error('게임 시각화 모듈을 불러오지 못했습니다.',e)}}
   const expansion=new Set(['reaction-speed-test','memory-card-game','lunch-worldcup','buy-or-not-calculator','resignation-letter-maker','power-of-attorney-maker','simple-receipt-maker','transaction-statement-maker','certified-content-letter-maker','employment-contract-maker']);
   if(expansion.has(slug)){try{await import('./expansion-tools.js')}catch(e){console.error('확장 도구 모듈을 불러오지 못했습니다.',e)}}
+  const fortunes=new Set(['daily-fortune','zodiac-fortune','saju-elements']);
+  if(fortunes.has(slug)){try{await import('./fortune-tools.js?v=20260918-1')}catch(e){console.error('운세 도구 모듈을 불러오지 못했습니다.',e)}}
+  const miniGames=new Set(['number-memory-test','up-down-game','typing-speed-test']);
+  if(miniGames.has(slug)){try{await import('./mini-game-tools.js?v=20260918-1')}catch(e){console.error('미니게임 모듈을 불러오지 못했습니다.',e)}}
   if(slug==='message-template-bank'){try{await import('./social-tools.js')}catch(e){console.error('문구 도구 모듈을 불러오지 못했습니다.',e)}}
   if(H[slug])H[slug]();else SM.box.innerHTML='<p class="error">도구 설정을 불러오지 못했습니다.</p>';
 })();

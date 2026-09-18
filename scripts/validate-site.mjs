@@ -1,6 +1,6 @@
 import fs from 'node:fs';import path from 'node:path';
 const root=path.resolve(import.meta.dirname,'..');
-const skip=new Set(['.git','scripts']);
+const skip=new Set(['.git','scripts','content-bot','node_modules']);
 function walk(dir){return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{if(skip.has(e.name))return[];const p=path.join(dir,e.name);return e.isDirectory()?walk(p):[p]})}
 const files=walk(root),htmls=files.filter(f=>f.endsWith('.html')),errors=[];
 const titles=new Set(),canonicals=new Set();
@@ -15,7 +15,7 @@ for(const file of htmls){const h=fs.readFileSync(file,'utf8'),rel=path.relative(
   for(const m of h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)){try{JSON.parse(m[1])}catch{errors.push(`${rel}: JSON-LD 오류`)}}
   for(const m of h.matchAll(/href="([^"]+)"/g)){const href=m[1];if(/^(https?:|mailto:|#)/.test(href)||href.includes('{'))continue;const clean=href.split('#')[0].split('?')[0];if(!clean)continue;const target=path.resolve(path.dirname(file),clean),candidate=clean.endsWith('/')?path.join(target,'index.html'):target;if(!fs.existsSync(candidate))errors.push(`${rel}: 깨진 링크 ${href}`)}
 }
-const toolPages=htmls.filter(f=>f.includes(`${path.sep}tools${path.sep}`));const engine=['tools.js','advanced-tools.js','game-tools.js','expansion-tools.js','social-tools.js'].map(name=>fs.readFileSync(path.join(root,'assets',name),'utf8')).join('\n');
+const toolPages=htmls.filter(f=>f.includes(`${path.sep}tools${path.sep}`));const engine=['tools.js','advanced-tools.js','game-tools.js','expansion-tools.js','social-tools.js','fortune-tools.js','mini-game-tools.js'].map(name=>fs.readFileSync(path.join(root,'assets',name),'utf8')).join('\n');
 const guideCautions=new Set();
 for(const file of toolPages){const h=fs.readFileSync(file,'utf8'),slug=h.match(/data-slug="([^"]+)/)?.[1],rel=path.relative(root,file);if(!slug||!engine.includes(`H['${slug}']`))errors.push(`${rel}: 기능 핸들러 없음`);if(!h.includes('assets/tool-ui.css'))errors.push(`${rel}: 도구 UI CSS 없음`);if(!h.includes('data-guide="complete"'))errors.push(`${rel}: 상세 사용안내 없음`);const caution=h.match(/<h2>사용 전 확인사항<\/h2><p>(.*?)<\/p>/)?.[1];if(!caution)errors.push(`${rel}: 고유 주의사항 없음`);else guideCautions.add(caution);if(h.replace(/<[^>]+>/g,'').length<900)errors.push(`${rel}: 본문 정보량 부족`)}
 if(guideCautions.size!==toolPages.length)errors.push(`고유 주의사항 ${guideCautions.size}개 (도구 페이지 ${toolPages.length}개와 불일치)`);
