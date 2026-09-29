@@ -1,10 +1,18 @@
 export const coreSlugs=new Set([
-  'image-compressor','image-cropper','background-remover','psd-image-converter','list-to-excel',
-  'character-byte-counter','json-formatter','csv-json-converter','text-diff-checker','meta-tag-preview',
-  'salary-calculator','severance-pay-calculator','vat-calculator','loan-calculator','compound-interest-calculator',
-  'wage-converter','date-calculator','timezone-converter','dday-calculator','percentage-calculator',
-  'resignation-letter-maker','employment-contract-maker','transaction-statement-maker','simple-receipt-maker',
-  'certified-content-letter-maker','power-of-attorney-maker','message-template-bank'
+  'px-rem-converter','css-gradient-generator','box-shadow-generator','color-converter','meta-tag-preview',
+  'flexbox-playground','css-clamp-calculator','image-base64-converter','image-compressor','image-cropper',
+  'background-remover','psd-image-converter','character-byte-counter','whitespace-remover','case-converter',
+  'duplicate-line-remover','json-formatter','url-encoder-decoder','html-entity-converter','slug-generator',
+  'markdown-preview','csv-json-converter','text-diff-checker','list-to-excel','dday-calculator',
+  'korean-age-calculator','percentage-calculator','salary-calculator','qr-code-generator','vat-calculator',
+  'loan-calculator','compound-interest-calculator','wage-converter','date-calculator','timezone-converter',
+  'severance-pay-calculator','area-converter','my-ip','pomodoro-timer','work-countdown','ladder-game',
+  'unit-converter','random-number-generator','password-generator','nickname-generator','random-wheel',
+  'dice-coin','unix-timestamp-converter','reaction-speed-test','memory-card-game','lunch-worldcup',
+  'buy-or-not-calculator','resignation-letter-maker','power-of-attorney-maker','simple-receipt-maker',
+  'transaction-statement-maker','certified-content-letter-maker','employment-contract-maker','message-template-bank',
+  'interview-question-planner','cover-letter-helper','saju-elements','daily-fortune','zodiac-fortune',
+  'number-memory-test','up-down-game','typing-speed-test'
 ]);
 
 const quality={

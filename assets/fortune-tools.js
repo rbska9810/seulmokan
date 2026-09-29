@@ -1,6 +1,17 @@
 const H=window.SM_HANDLERS=window.SM_HANDLERS||{},SM=window.SM;
 let dataPromise;
 const loadData=()=>dataPromise??=fetch('../../assets/fortune-data.json').then(response=>{if(!response.ok)throw Error('운세 데이터를 불러오지 못했습니다.');return response.json()});
+let lunarPromise;
+const loadLunar=()=>{
+  if(window.Solar&&window.Lunar)return Promise.resolve();
+  return lunarPromise??=new Promise((resolve,reject)=>{
+    const script=document.createElement('script');
+    script.src='https://cdn.jsdelivr.net/npm/lunar-javascript@1.7.3/lunar.js';
+    script.onload=()=>window.Solar&&window.Lunar?resolve():reject(Error('만세력 계산기를 초기화하지 못했습니다.'));
+    script.onerror=()=>reject(Error('만세력 라이브러리를 내려받지 못했습니다. 인터넷 연결을 확인하세요.'));
+    document.head.append(script);
+  });
+};
 const today=()=>{const d=new Date(),offset=d.getTimezoneOffset()*60000;return new Date(d-offset).toISOString().slice(0,10)};
 const hash=text=>{let value=2166136261;for(const char of text){value^=char.codePointAt(0);value=Math.imul(value,16777619)}return value>>>0};
 const pick=(list,seed,step=0)=>list[(seed+step*2654435761>>>0)%list.length];
@@ -21,6 +32,32 @@ H['zodiac-fortune']=()=>{
 };
 
 H['saju-elements']=()=>{
-  SM.box.innerHTML=`<div class="grid2">${SM.field('birth','양력 생년월일','date','','required')}${SM.select('birthHour','태어난 시간',[['unknown','모름'],['0','자시 (23~01시)'],['2','축시 (01~03시)'],['4','인시 (03~05시)'],['6','묘시 (05~07시)'],['8','진시 (07~09시)'],['10','사시 (09~11시)'],['12','오시 (11~13시)'],['14','미시 (13~15시)'],['16','신시 (15~17시)'],['18','유시 (17~19시)'],['20','술시 (19~21시)'],['22','해시 (21~23시)']])}</div><p class="hint">음력·절기·만세력을 적용한 전문 사주가 아니라, JSON 규칙으로 오행 키워드를 조합하는 가벼운 성향 보기입니다.</p>${SM.buttons('오행 성향 보기')}`;
-  SM.wire(async()=>{const data=await loadData(),birth=SM.required('birth');if(birth>today())throw Error('생년월일은 오늘 이전이어야 합니다.');const [year,month,day]=birth.split('-').map(Number),keys=['wood','fire','earth','metal','water'],counts=Object.fromEntries(keys.map(key=>[key,1]));const yearMap=['metal','metal','water','water','wood','wood','fire','fire','earth','earth'],season=month<=2||month===12?'water':month<=5?'wood':month<=8?'fire':'metal';counts[yearMap[year%10]]+=3;counts[season]+=3;counts[keys[(year+month+day)%5]]+=3;if(SM.val('birthHour')!=='unknown')counts[keys[(Number(SM.val('birthHour'))/2|0)%5]]+=2;else counts.earth+=1;const ranked=keys.toSorted((a,b)=>counts[b]-counts[a]),main=data.elements[ranked[0]],support=data.elements[ranked[1]],lack=data.elements[ranked.at(-1)],max=Math.max(...Object.values(counts));const bars=keys.map(key=>{const item=data.elements[key];return `<div class="element-row"><span>${item.symbol} ${item.name}</span><i><b style="width:${Math.round(counts[key]/max*100)}%"></b></i><strong>${counts[key]}</strong></div>`}).join('');SM.result(`<div class="element-title"><span>${main.symbol}</span><div><small>가장 두드러진 키워드</small><strong>${main.name}(木火土金水 중 ${main.name})</strong><p>${main.keywords.join(' · ')}</p></div></div><div class="element-bars">${bars}</div><div class="fortune-columns"><div><span>주요 강점</span><p>${main.strength}</p></div><div><span>보조 성향</span><p>${support.name} 기운의 ${support.strength}</p></div><div><span>보완 힌트</span><p>${lack.name} 키워드가 낮게 나왔습니다. ${lack.action}</p></div><div><span>오늘의 한 줄</span><p>${main.caution}</p></div></div><p class="fortune-notice">이 결과는 양력 숫자를 단순화한 쓸모칸 오락용 규칙으로 조합한 성향 컨텐츠입니다. 전통 명리학의 만세력·대운·세운 풀이가 아닙니다.</p>${copyButton}`,true);wireCopy()});
+  SM.box.innerHTML=`<div class="grid2">${SM.select('calendarType','생일 기준',[['solar','양력'],['lunar','음력']])}${SM.field('birth','생년월일','date','','required')}${SM.field('birthTime','태어난 시각','time','12:00')}${SM.check('unknownTime','태어난 시각 모름')}</div><div id="lunarOptions" hidden>${SM.check('leapMonth','음력 윤달')}</div><p class="hint">한국 표준시를 기준으로 절기와 만세력을 적용해 연주·월주·일주·시주를 계산합니다. 출생 시각을 모르면 시주는 표시하지 않습니다.</p>${SM.buttons('사주팔자 보기')}`;
+  const calendar=SM.q('#calendarType'),lunarOptions=SM.q('#lunarOptions'),time=SM.q('#birthTime'),unknown=SM.q('#unknownTime');
+  calendar.addEventListener('change',()=>lunarOptions.hidden=calendar.value!=='lunar');
+  unknown.addEventListener('change',()=>{time.disabled=unknown.checked});
+  SM.wire(async()=>{
+    const [data]=await Promise.all([loadData(),loadLunar()]),birth=SM.required('birth');
+    if(calendar.value==='solar'&&birth>today())throw Error('생년월일은 오늘 이전이어야 합니다.');
+    const [year,month,day]=birth.split('-').map(Number),[hour,minute]=(time.value||'12:00').split(':').map(Number);
+    let solar;
+    try{
+      if(calendar.value==='lunar'){
+        const lunarMonth=SM.q('#leapMonth').checked?-month:month;
+        solar=window.Lunar.fromYmdHms(year,lunarMonth,day,unknown.checked?12:hour,unknown.checked?0:minute,0).getSolar();
+      }else solar=window.Solar.fromYmdHms(year,month,day,unknown.checked?12:hour,unknown.checked?0:minute,0);
+    }catch{throw Error('입력한 날짜를 만세력으로 변환할 수 없습니다. 윤달 여부와 날짜를 확인하세요.')}
+    const lunar=solar.getLunar(),eight=lunar.getEightChar();
+    const pillars=[['연주',eight.getYear()],['월주',eight.getMonth()],['일주',eight.getDay()]];
+    if(!unknown.checked)pillars.push(['시주',eight.getTime()]);
+    const stemElement={甲:'wood',乙:'wood',丙:'fire',丁:'fire',戊:'earth',己:'earth',庚:'metal',辛:'metal',壬:'water',癸:'water'};
+    const branchElement={寅:'wood',卯:'wood',巳:'fire',午:'fire',辰:'earth',戌:'earth',丑:'earth',未:'earth',申:'metal',酉:'metal',亥:'water',子:'water'};
+    const keys=['wood','fire','earth','metal','water'],counts=Object.fromEntries(keys.map(key=>[key,0]));
+    for(const [,value] of pillars){counts[stemElement[value[0]]]++;counts[branchElement[value[1]]]++}
+    const ranked=keys.toSorted((a,b)=>counts[b]-counts[a]),strong=data.elements[ranked[0]],weak=data.elements[ranked.at(-1)],dayMaster=data.elements[stemElement[eight.getDayGan()]],max=Math.max(...Object.values(counts),1);
+    const pillarCards=pillars.map(([label,value],index)=>`<div class="saju-pillar"><span>${label}</span><strong>${value}</strong><small>${index===2?'나를 나타내는 일주':index===0?'가문·초년의 자리':index===1?'사회·성장의 자리':'후반·표현의 자리'}</small></div>`).join('');
+    const bars=keys.map(key=>{const item=data.elements[key];return `<div class="element-row"><span>${item.symbol} ${item.name}</span><i><b style="width:${Math.round(counts[key]/max*100)}%"></b></i><strong>${counts[key]}</strong></div>`}).join('');
+    const solarText=`${solar.getYear()}-${String(solar.getMonth()).padStart(2,'0')}-${String(solar.getDay()).padStart(2,'0')}`;
+    SM.result(`<div class="saju-heading"><small>${calendar.value==='lunar'?'음력 입력을 양력으로 환산 · ':''}${solarText}${unknown.checked?' · 출생 시각 미상':''}</small><h3>사주 원국</h3></div><div class="saju-pillars">${pillarCards}</div><div class="element-title"><span>${dayMaster.symbol}</span><div><small>일간 · 나를 나타내는 중심 기운</small><strong>${eight.getDayGan()} · ${dayMaster.name}</strong><p>${dayMaster.keywords.join(' · ')}</p></div></div><h3 class="result-subtitle">팔자에 드러난 오행</h3><div class="element-bars">${bars}</div><div class="fortune-columns"><div><span>두드러진 오행</span><p>${strong.name}의 비중이 높습니다. ${strong.strength}</p></div><div><span>적게 드러난 오행</span><p>${weak.name}의 글자가 적습니다. 부족하다고 단정하기보다 전체 조합과 계절을 함께 봐야 합니다.</p></div><div><span>일간 성향 참고</span><p>${dayMaster.caution}</p></div><div><span>해석 범위</span><p>현재 결과는 원국 네 기둥과 표면 오행을 보여줍니다. 용신·대운처럼 학파별 판단이 필요한 항목은 단정하지 않습니다.</p></div></div><p class="fortune-notice">절기 기반 만세력으로 사주팔자를 계산하지만, 출생지에 따른 진태양시 보정과 학파별 해석 차이는 반영하지 않습니다. 전통문화·자기성찰용 참고 결과이며 중요한 결정을 대신하지 않습니다.</p>${copyButton}`,true);wireCopy()
+  });
 };
