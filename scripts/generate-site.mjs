@@ -2,7 +2,7 @@ import fs from 'node:fs';import path from 'node:path';
 import {coreSlugs,qualityArticle,insights} from './content-quality.mjs';
 import {applyQuality} from './apply-quality.mjs';
 const root=path.resolve(import.meta.dirname,'..');
-const assetVersion='20260930-2';
+const assetVersion='20260930-3';
 process.once('beforeExit',()=>{
   for(const [slug] of tools){
     const file=path.join(root,'tools',slug,'index.html');
@@ -81,7 +81,8 @@ const tools=[
 ['employment-contract-maker','표준 근로계약서 작성기','서식·문서 생성','근무기간, 장소, 업무, 근로시간, 임금과 휴일을 입력해 근로계약서 초안을 만듭니다.'],
 ['message-template-bank','사회생활·카톡 대필 문구','서식·문서 생성','연차 요청, 결혼식 불참, 거래처 거절처럼 말이 막히는 상황에 맞는 문구를 골라 복사합니다.'],
 ['interview-question-planner','직무별 면접 예상 질문지','취업 준비','지원 직무와 경력 단계에 맞는 예상 질문, 평가 포인트와 답변 점검표를 만듭니다.'],
-['cover-letter-helper','자기소개서 작성 도우미','취업 준비','본인의 상황·행동·결과를 STAR 구조로 정리해 자기소개서 초안과 누락 항목을 확인합니다.']];
+['cover-letter-helper','자기소개서 작성 도우미','취업 준비','본인의 상황·행동·결과를 STAR 구조로 정리해 자기소개서 초안과 누락 항목을 확인합니다.'],
+['one-minute-introduction-builder','1분 자기소개 구성기','취업 준비','지원 직무와 실제 경험을 바탕으로 45초·60초·90초 자기소개 대본과 말하기 점검표를 만듭니다.']];
 const base='https://www.seulmokan.com/';
 const topic=s=>{const c=s.at(-1)?.charCodeAt(0);return c>=0xac00&&c<=0xd7a3&&(c-0xac00)%28!==0?'은':'는'};
 const metaKeywords=()=>'';
@@ -166,7 +167,8 @@ const guideDetails={
 'employment-contract-maker':['사용자·근로자 정보, 계약기간, 근무장소, 업무, 근로시간, 임금, 지급일, 휴일과 연차를 입력합니다.','근로기준법 제17조의 주요 명시사항을 포함한 계약서 초안을 생성합니다.','사업장 규모와 근로형태에 따라 적용 기준이 달라질 수 있으므로 고용노동부 표준서식과 노무 전문가에게 최종 확인하세요.'],
 'message-template-bank':['연차 요청, 결혼식 불참, 거래처 거절, 일정 변경, 지각 사과 등 상황과 말투를 선택하고 이름·날짜 같은 선택 정보를 입력합니다.','상황별 문구 여러 개를 비교해 바로 복사한 뒤 괄호 속 정보와 사실관계를 본인 상황에 맞게 고칩니다.','대필 문구는 참고 초안입니다. 상대와의 관계, 조직 문화와 실제 약속을 반영하고 사실과 다른 내용은 보내지 마세요.'],
 'interview-question-planner':['지원 직무, 경력 단계, 회사·산업과 강조할 경험을 입력하고 원하는 질문 수를 선택합니다.','공통·직무·경험·상황 질문과 각 질문에서 확인하려는 답변 포인트를 한 번에 정리합니다.','답변을 외우기보다 상황·과제·행동·결과를 본인 경험에 맞게 메모하고 사실과 다른 성과를 만들지 마세요.'],
-'cover-letter-helper':['지원 회사와 직무, 자기소개서 항목을 선택하고 본인의 실제 상황·행동·결과와 직무 연결점을 입력합니다.','입력한 경험만 사용해 STAR 흐름의 초안을 만들고 글자 수, 수치 근거와 직무 연결 누락을 점검합니다.','생성된 문장은 제출용 완성본이 아닙니다. 본인의 말투로 고치고 면접에서 직접 설명할 수 있는 사실인지 확인하세요.']};
+'cover-letter-helper':['지원 회사와 직무, 자기소개서 항목을 선택하고 본인의 실제 상황·행동·결과와 직무 연결점을 입력합니다.','입력한 경험만 사용해 STAR 흐름의 초안을 만들고 글자 수, 수치 근거와 직무 연결 누락을 점검합니다.','생성된 문장은 제출용 완성본이 아닙니다. 본인의 말투로 고치고 면접에서 직접 설명할 수 있는 사실인지 확인하세요.'],
+'one-minute-introduction-builder':['지원 직무, 경력 단계, 핵심 강점, 실제 경험과 입사 후 기여 방향을 입력하고 목표 시간을 선택합니다.','말하기 속도에 맞춘 대본과 예상 소요시간, 빠진 근거·직무 연결·마무리 항목을 함께 확인합니다.','문장을 그대로 암기하지 말고 실제 말투로 소리 내어 연습하세요. 경험과 성과는 면접에서 설명할 수 있는 사실만 입력해야 합니다.']};
 const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const header=`<header><nav class="nav"><a class="brand" href="../../"><span class="mark">ㅆ</span>쓸모칸</a><div class="navlinks"><a href="../../#tools">전체 도구</a><a href="../../about/">소개</a><a href="../../privacy/">개인정보</a></div><button class="theme" data-theme aria-label="다크 모드">☾</button></nav></header>`;
 const footer=`<footer><div class="foot"><b>쓸모 있는 도구를 한 칸에</b><span><a href="../../guide/">사용가이드</a><a href="../../about/">소개</a><a href="../../privacy/">개인정보처리방침</a><a href="../../terms/">이용약관</a><a href="../../contact/">문의</a></span><span>© <i data-year></i> SEULMOKAN</span></div></footer>`;

@@ -29,12 +29,15 @@ export function applyQuality({root,base,tools,infoPages,notes,guideDetails,esc})
       ? `<article class="content-card tool-guide quality-article" data-guide="quality"><h2>${esc(title)} 사용 방법</h2><p>${esc(guide[0])}</p><h2>결과에서 확인할 내용</h2><p>${esc(guide[1])}</p>${qualityArticle(slug)}${notes[slug]||''}<h2>사용 전 꼭 확인하세요</h2><p>${esc(guide[2])}</p></article>`
       : `<article class="content-card tool-guide lab-article" data-guide="lab"><div class="lab-notice"><b>실험실 기능</b><p>이 페이지는 기능을 유지하되 검색 색인과 광고 대상에서 제외했습니다. 사용 의견을 반영해 설명과 검증 기준을 보강한 뒤 핵심 도구로 전환합니다.</p></div><h2>${esc(title)} 사용 방법</h2><ol><li>${esc(guide[0])}</li><li>${esc(guide[1])}</li></ol><h2>사용 전 확인</h2><p>${esc(guide[2])}</p>${notes[slug]||''}</article>`;
     html=html.replace(/<article class="content-card tool-guide"[\s\S]*?<\/article>/,article);
-    const related=tools.filter(t=>t[0]!==slug&&coreSlugs.has(t[0])&&(t[2]===category||isCore)).slice(0,3);
+    const sameCategory=tools.filter(t=>t[0]!==slug&&coreSlugs.has(t[0])&&t[2]===category);
+    const fallback=tools.filter(t=>t[0]!==slug&&coreSlugs.has(t[0])&&t[2]!==category);
+    const related=[...sameCategory,...fallback].slice(0,3);
     html=html.replace(/<div class="related">[\s\S]*?<\/div>/,`<div class="related">${related.map(t=>`<a href="../${t[0]}/">${esc(t[1])} →</a>`).join('')}</div>`);
     fs.writeFileSync(file,html);
   }
 
   const guideLinks={
+    'interview-answer-framework':'one-minute-introduction-builder',
     'severance-pay-basics':'severance-pay-calculator','salary-net-pay-checklist':'salary-calculator',
     'image-format-guide':'image-compressor','background-removal-tips':'background-remover',
     'spreadsheet-import-guide':'list-to-excel','vat-supply-price-guide':'vat-calculator',

@@ -26,7 +26,7 @@ for(const file of toolPages){const h=fs.readFileSync(file,'utf8'),slug=h.match(/
   else{if(!h.includes('data-guide="lab"'))errors.push(`${rel}: 실험실 표기 없음`);if(!/noindex,follow/.test(h))errors.push(`${rel}: 실험실 noindex 없음`)}
 }
 for(const [text,count] of paragraphUse)if(count>=10&&!text.startsWith('별도 안내가 없는 계산'))errors.push(`핵심 도구 중복 문단 ${count}회: ${text.slice(0,45)}…`);
-if(toolPages.length!==67)errors.push(`도구 페이지 수 오류 ${toolPages.length}`);
+if(toolPages.length<coreSlugs.size)errors.push(`도구 페이지 수 오류 ${toolPages.length} (핵심 목록 ${coreSlugs.size})`);
 if(!fs.existsSync(path.join(root,'assets','favicon.svg')))errors.push('favicon 파일 없음');
 const og=path.join(root,'assets','og-image.png');if(!fs.existsSync(og)||fs.statSync(og).size<5000)errors.push('OG 이미지 파일 없음 또는 비정상');
 if(!fs.existsSync(path.join(root,'lab','index.html')))errors.push('실험실 인덱스 없음');

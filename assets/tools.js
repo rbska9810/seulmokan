@@ -90,7 +90,7 @@ H['unix-timestamp-converter']=()=>{SM.box.innerHTML=`<div class="grid2">${SM.fie
   if(fortunes.has(slug)){try{await import('./fortune-tools.js?v=20260918-1')}catch(e){console.error('운세 도구 모듈을 불러오지 못했습니다.',e)}}
   const miniGames=new Set(['number-memory-test','up-down-game','typing-speed-test']);
   if(miniGames.has(slug)){try{await import('./mini-game-tools.js?v=20260918-1')}catch(e){console.error('미니게임 모듈을 불러오지 못했습니다.',e)}}
-  if(['message-template-bank','interview-question-planner','cover-letter-helper'].includes(slug)){try{await import('./social-tools.js?v=20260930-2')}catch(e){console.error('취업·문구 도구 모듈을 불러오지 못했습니다.',e)}}
+  if(['message-template-bank','interview-question-planner','cover-letter-helper','one-minute-introduction-builder'].includes(slug)){try{await import('./social-tools.js?v=20260930-3')}catch(e){console.error('취업·문구 도구 모듈을 불러오지 못했습니다.',e)}}
   if(slug==='background-remover'){try{await import('./background-remover-v2.js?v=20260918-3')}catch(e){console.error('정밀 배경 제거 도구를 불러오지 못했습니다.',e)}}
   if(['nickname-generator','dice-coin','image-cropper','background-remover'].includes(slug)){try{await import('./simple-tool-overrides.js?v=20260918-3')}catch(e){console.error('간편 도구 설정을 불러오지 못했습니다.',e)}}
   if(H[slug])H[slug]();else SM.box.innerHTML='<p class="error">도구 설정을 불러오지 못했습니다.</p>';
