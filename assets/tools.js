@@ -9,7 +9,7 @@ const SM=window.SM=(()=>{
   const fmt=(n,digits=4)=>Number(n).toLocaleString('ko-KR',{maximumFractionDigits:digits});
   const won=n=>`${Math.round(n).toLocaleString('ko-KR')}원`;
   const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const result=(v,html=false,error=false)=>{const r=q('#result');if(!r)return;r.classList.toggle('is-error',error);html?r.innerHTML=v:r.textContent=v};
+  const result=(v,html=false,error=false)=>{const r=q('#result');if(!r)return;r.classList.toggle('is-error',error);html?r.innerHTML=v:r.textContent=v;if(!error&&String(v)!=='값을 입력하고 실행하세요.')window.smTrack?.('tool_result')};
   const fail=e=>{result(`입력값을 확인해주세요.\n${e instanceof Error?e.message:String(e)}`,false,true);q('#result')?.focus()};
   const field=(id,label,type='number',value='',attrs='')=>`<div class="field"><label for="${id}">${label}</label><input class="input" id="${id}" name="${id}" type="${type}" value="${esc(value)}" ${attrs}></div>`;
   const area=(id='input',label='텍스트 입력',placeholder='내용을 입력하세요.',attrs='')=>`<div class="field"><label for="${id}">${label}</label><textarea class="textarea" id="${id}" name="${id}" placeholder="${esc(placeholder)}" ${attrs}></textarea></div>`;
