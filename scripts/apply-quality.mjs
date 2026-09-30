@@ -41,7 +41,9 @@ export function applyQuality({root,base,tools,infoPages,notes,guideDetails,esc})
     'severance-pay-basics':'severance-pay-calculator','salary-net-pay-checklist':'salary-calculator',
     'image-format-guide':'image-compressor','background-removal-tips':'background-remover',
     'spreadsheet-import-guide':'list-to-excel','vat-supply-price-guide':'vat-calculator',
-    'document-draft-safety':'employment-contract-maker','browser-processing-privacy':'image-cropper'
+    'document-draft-safety':'employment-contract-maker','browser-processing-privacy':'image-cropper',
+    'pyeong-square-meter-table':'area-converter','salary-table-2026':'salary-calculator',
+    'character-byte-limits':'character-byte-counter'
   };
   const insightCards=Object.entries(insights).map(([slug,item])=>`<a class="quality-card" href="./${slug}/"><span>활용 가이드</span><h2>${item.title}</h2><p>${item.description}</p><b>읽어보기 →</b></a>`).join('');
   const insightIndex=doc('쓸모칸 활용 가이드','계산·이미지·문서 도구를 정확하고 안전하게 쓰기 위한 쓸모칸의 원문 가이드입니다.',base+'insights/',1,`<main class="wrap"><div class="crumb"><a href="../">홈</a> / 활용 가이드</div><section class="hero"><div class="eyebrow">ORIGINAL GUIDES</div><h1>도구를 제대로 쓰는 방법</h1><p class="lead">버튼 사용법을 넘어 결과가 달라지는 이유, 입력 자료 준비법과 완료 전 확인사항을 직접 정리했습니다.</p></section><section class="quality-grid">${insightCards}</section></main>`,'CollectionPage');
@@ -81,7 +83,7 @@ export function applyQuality({root,base,tools,infoPages,notes,guideDetails,esc})
     fs.writeFileSync(file,cleanHead(fs.readFileSync(file,'utf8')).replace(/최종 수정일: 2026년 9월 13일/g,'최종 수정일: 2026년 9월 20일'));
   }
   const urls=[base,...Object.keys(infoPages).map(x=>base+x+'/'),base+'insights/',...Object.keys(insights).map(x=>base+'insights/'+x+'/'),...tools.filter(t=>coreSlugs.has(t[0])).map(t=>base+'tools/'+t[0]+'/')];
-  fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>`  <url><loc>${u}</loc><lastmod>2026-09-20</lastmod></url>`).join('\n')+'\n</urlset>\n');
+  fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>`  <url><loc>${u}</loc><lastmod>2026-09-30</lastmod></url>`).join('\n')+'\n</urlset>\n');
 
   const htmlFiles=[];const walk=dir=>{for(const item of fs.readdirSync(dir,{withFileTypes:true})){if(['.git','node_modules'].includes(item.name))continue;const full=path.join(dir,item.name);if(item.isDirectory())walk(full);else if(item.name.endsWith('.html'))htmlFiles.push(full);}};walk(root);
   for(const file of htmlFiles){let html=cleanHead(fs.readFileSync(file,'utf8'));fs.writeFileSync(file,html);}
