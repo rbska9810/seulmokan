@@ -10,6 +10,42 @@ const cleanHead=html=>html
   .replace(/<aside class="side">\s*<\/aside>/gi,'')
   .replace(/<div class="layout">/g,'<div class="layout quality-layout">');
 
+const seoOverrides={
+  'area-converter':{
+    title:'평수 계산기 | 제곱미터(㎡) 평 변환·아파트 면적표',
+    description:'제곱미터(㎡)와 평을 양방향으로 바로 변환하세요. 59㎡·74㎡·84㎡ 아파트 공급면적과 전용면적을 구분하는 환산표도 함께 확인할 수 있습니다.'
+  },
+  'salary-calculator':{
+    title:'2026 연봉 실수령액 계산기 | 월급·4대보험 공제',
+    description:'2026년 연봉과 비과세액, 부양가족 수를 입력해 월 예상 실수령액과 국민연금·건강보험·고용보험·세금 공제액을 계산합니다.'
+  },
+  'severance-pay-calculator':{
+    title:'퇴직금 계산기 | 입사일·최근 3개월 임금 자동 계산',
+    description:'입사일과 퇴사일, 최근 3개월 급여를 입력하면 재직일수와 1일 평균임금, 예상 퇴직금을 자동으로 계산합니다.'
+  },
+  'text-diff-checker':{
+    title:'텍스트 비교 사이트 | 글자·문장 차이 찾기',
+    description:'두 텍스트를 붙여 넣으면 줄별 추가·삭제·변경 내용을 표시합니다. 문서, 코드, 문자 내용을 설치 없이 빠르게 비교하세요.'
+  },
+  'character-byte-counter':{
+    title:'글자수·바이트 계산기 | 공백 포함·제외·UTF-8',
+    description:'텍스트를 입력하면 공백 포함·제외 글자수, 단어·줄 수와 UTF-8 바이트를 실시간 계산합니다. 자기소개서와 문자 길이 확인에 활용하세요.'
+  },
+  'lunch-worldcup':{
+    title:'점심 메뉴 월드컵 | 오늘 뭐 먹지? 32강 추천',
+    description:'한식·중식·일식·분식 등 32가지 메뉴를 사진으로 비교해 오늘의 점심을 고르는 무료 메뉴 이상형 월드컵입니다.'
+  }
+};
+
+const relatedOverrides={
+  'area-converter':['percentage-calculator','loan-calculator','date-calculator'],
+  'salary-calculator':['wage-converter','severance-pay-calculator','percentage-calculator'],
+  'severance-pay-calculator':['salary-calculator','wage-converter','date-calculator'],
+  'text-diff-checker':['character-byte-counter','whitespace-remover','duplicate-line-remover'],
+  'character-byte-counter':['text-diff-checker','whitespace-remover','case-converter'],
+  'lunch-worldcup':['random-wheel','ladder-game','dice-coin']
+};
+
 const doc=(title,description,url,depth,body,schemaType='Article')=>{
   const prefix='../'.repeat(depth);
   return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${title} | 쓸모칸</title><meta name="description" content="${description}"><meta name="google-adsense-account" content="ca-pub-9462573435168414"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${url}"><link rel="icon" href="${prefix}assets/favicon.svg" type="image/svg+xml"><meta property="og:type" content="article"><meta property="og:site_name" content="쓸모칸"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:url" content="${url}"><meta property="og:image" content="https://www.seulmokan.com/assets/og-image.png"><link rel="stylesheet" href="${prefix}assets/site.css?v=20260920-1"><script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@type':schemaType,headline:title,description,url,author:{'@type':'Organization',name:'쓸모칸'},publisher:{'@type':'Organization',name:'쓸모칸',url:'https://www.seulmokan.com/'},datePublished:'2026-09-20',dateModified:'2026-09-20',inLanguage:'ko-KR'})}</script></head><body><header><nav class="nav"><a class="brand" href="${prefix}"><span class="mark">ㅆ</span>쓸모칸</a><div class="navlinks"><a href="${prefix}#tools">핵심 도구</a><a href="${prefix}insights/">활용 가이드</a><a href="${prefix}about/">소개</a></div><button class="theme" data-theme aria-label="다크 모드">☾</button></nav></header>${body}<footer><div class="foot"><b>쓸모 있는 도구를 한 칸에</b><span><a href="${prefix}guide/">사용가이드</a><a href="${prefix}about/">소개</a><a href="${prefix}privacy/">개인정보처리방침</a><a href="${prefix}terms/">이용약관</a><a href="${prefix}contact/">문의</a></span><span>© <i data-year></i> SEULMOKAN</span></div></footer><script src="${prefix}assets/common.js?v=20260920-1"></script></body></html>`;
@@ -22,7 +58,15 @@ export function applyQuality({root,base,tools,infoPages,notes,guideDetails,esc})
     let html=cleanHead(fs.readFileSync(file,'utf8'));
     const isCore=coreSlugs.has(slug);
     html=html.replace(/<meta name="robots" content="[^"]*">/,`<meta name="robots" content="${isCore?'index,follow,max-image-preview:large':'noindex,follow'}">`);
-    const metaDescription=description.length<30?`${description} 입력값과 결과를 한 화면에서 확인합니다.`:description;
+    const seo=seoOverrides[slug];
+    const metaDescription=seo?.description||(description.length<30?`${description} 입력값과 결과를 한 화면에서 확인합니다.`:description);
+    if(seo){
+      html=html.replace(/<title>[^<]*<\/title>/,`<title>${esc(seo.title)} | 쓸모칸</title>`);
+      html=html.replace(/<meta property="og:title" content="[^"]*">/,`<meta property="og:title" content="${esc(seo.title)}">`);
+      html=html.replace(/<meta property="og:description" content="[^"]*">/,`<meta property="og:description" content="${esc(seo.description)}">`);
+      html=html.replace(/<meta name="twitter:title" content="[^"]*">/,`<meta name="twitter:title" content="${esc(seo.title)}">`);
+      html=html.replace(/<meta name="twitter:description" content="[^"]*">/,`<meta name="twitter:description" content="${esc(seo.description)}">`);
+    }
     html=html.replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${esc(metaDescription)}">`);
     const guide=guideDetails[slug];
     const article=isCore
@@ -31,7 +75,9 @@ export function applyQuality({root,base,tools,infoPages,notes,guideDetails,esc})
     html=html.replace(/<article class="content-card tool-guide"[\s\S]*?<\/article>/,article);
     const sameCategory=tools.filter(t=>t[0]!==slug&&coreSlugs.has(t[0])&&t[2]===category);
     const fallback=tools.filter(t=>t[0]!==slug&&coreSlugs.has(t[0])&&t[2]!==category);
-    const related=[...sameCategory,...fallback].slice(0,3);
+    const related=relatedOverrides[slug]
+      ? relatedOverrides[slug].map(id=>bySlug.get(id)).filter(Boolean)
+      : [...sameCategory,...fallback].slice(0,3);
     html=html.replace(/<div class="related">[\s\S]*?<\/div>/,`<div class="related">${related.map(t=>`<a href="../${t[0]}/">${esc(t[1])} →</a>`).join('')}</div>`);
     fs.writeFileSync(file,html);
   }
@@ -83,7 +129,7 @@ export function applyQuality({root,base,tools,infoPages,notes,guideDetails,esc})
     fs.writeFileSync(file,cleanHead(fs.readFileSync(file,'utf8')).replace(/최종 수정일: 2026년 9월 13일/g,'최종 수정일: 2026년 9월 20일'));
   }
   const urls=[base,...Object.keys(infoPages).map(x=>base+x+'/'),base+'insights/',...Object.keys(insights).map(x=>base+'insights/'+x+'/'),...tools.filter(t=>coreSlugs.has(t[0])).map(t=>base+'tools/'+t[0]+'/')];
-  fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>`  <url><loc>${u}</loc><lastmod>2026-09-30</lastmod></url>`).join('\n')+'\n</urlset>\n');
+  fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>`  <url><loc>${u}</loc><lastmod>2026-10-03</lastmod></url>`).join('\n')+'\n</urlset>\n');
 
   const htmlFiles=[];const walk=dir=>{for(const item of fs.readdirSync(dir,{withFileTypes:true})){if(['.git','node_modules'].includes(item.name))continue;const full=path.join(dir,item.name);if(item.isDirectory())walk(full);else if(item.name.endsWith('.html'))htmlFiles.push(full);}};walk(root);
   for(const file of htmlFiles){let html=cleanHead(fs.readFileSync(file,'utf8'));fs.writeFileSync(file,html);}
