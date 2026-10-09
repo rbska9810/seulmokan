@@ -1,3 +1,5 @@
+import {extraQuality} from './content-quality-extra.mjs';
+
 export const coreSlugs=new Set([
   'px-rem-converter','css-gradient-generator','box-shadow-generator','color-converter','meta-tag-preview',
   'flexbox-playground','css-clamp-calculator','image-base64-converter','image-compressor','image-cropper',
@@ -211,8 +213,8 @@ const quality={
 };
 
 export const qualityArticle=slug=>{
-  const item=quality[slug];
-  if(!item)return '';
+  const item=quality[slug]||extraQuality[slug];
+  if(!item)throw Error(`${slug}: 고유한 품질 안내가 없습니다.`);
   const guide={
     'area-converter':['pyeong-square-meter-table','평수·제곱미터 환산표와 면적 종류 읽는 법'],
     'salary-calculator':['salary-table-2026','2026 연봉별 월 실수령액을 비교하는 법'],
