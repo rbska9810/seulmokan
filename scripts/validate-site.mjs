@@ -30,7 +30,7 @@ if(toolPages.length<coreSlugs.size)errors.push(`도구 페이지 수 오류 ${to
 if(!fs.existsSync(path.join(root,'assets','favicon.svg')))errors.push('favicon 파일 없음');
 const og=path.join(root,'assets','og-image.png');if(!fs.existsSync(og)||fs.statSync(og).size<5000)errors.push('OG 이미지 파일 없음 또는 비정상');
 if(!fs.existsSync(path.join(root,'lab','index.html')))errors.push('실험실 인덱스 없음');
-for(const slug of Object.keys(insights))if(!fs.existsSync(path.join(root,'insights',slug,'index.html')))errors.push(`가이드 누락 ${slug}`);
+for(const [slug,item] of Object.entries(insights)){const file=path.join(root,'insights',slug,'index.html');if(!fs.existsSync(file)){errors.push(`가이드 누락 ${slug}`);continue}const text=item.body.replace(/<[^>]+>/g,'').replace(/s+/g,' ');if(text.length<1500)errors.push(`가이드 본문 정보량 부족 ${slug} (${text.length}자)`);if(!/<table/.test(item.body)&&!/<ol>/.test(item.body))errors.push(`가이드 예시 표·절차 없음 ${slug}`);if(!/class="faq-list"/.test(item.body))errors.push(`가이드 FAQ 없음 ${slug}`);if(!item.published||!item.updated)errors.push(`가이드 날짜 없음 ${slug}`)}
 const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8'),sitemapUrls=[...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>m[1]);
 if(sitemapUrls.length!==indexableCanonicals.size)errors.push(`sitemap URL ${sitemapUrls.length}개 (색인 가능 canonical ${indexableCanonicals.size}개와 불일치)`);
 for(const canonical of indexableCanonicals)if(!sitemapUrls.includes(canonical))errors.push(`sitemap 누락 ${canonical}`);
