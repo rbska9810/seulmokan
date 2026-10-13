@@ -1,16 +1,18 @@
 import {moneyInsights} from './content-insights-money.mjs';
 import {workInsights} from './content-insights-work.mjs';
+import {lifeInsights} from './content-insights-life.mjs';
 
 // 가이드 목록 순서 = 활용 가이드 페이지와 홈에 노출되는 순서
 const order=[
   'salary-table-2026','severance-pay-basics','minimum-wage-2026-monthly-pay','pyeong-square-meter-table',
-  'salary-net-pay-checklist','loan-repayment-methods','vat-supply-price-guide','compound-interest-rule-of-72',
+  'annual-leave-calculation','salary-net-pay-checklist','loan-repayment-methods','vat-supply-price-guide','compound-interest-rule-of-72',
   'character-byte-limits','korean-age-rules','date-counting-rules','percent-percentage-point-guide',
+  'unit-conversion-table','time-zone-dst-guide','pomodoro-technique-guide','qr-code-print-guide',
   'resignation-letter-guide','employment-contract-checklist','document-draft-safety','interview-answer-framework',
   'image-format-guide','background-removal-tips','spreadsheet-import-guide','browser-processing-privacy',
-  'strong-password-guide','json-common-errors'
+  'strong-password-guide','json-common-errors','unix-timestamp-guide','px-rem-css-units'
 ];
-const all={...moneyInsights,...workInsights};
+const all={...moneyInsights,...workInsights,...lifeInsights};
 for(const slug of Object.keys(all))if(!order.includes(slug))throw Error(`가이드 순서 누락 ${slug}`);
 export const insights=Object.fromEntries(order.map(slug=>{if(!all[slug])throw Error(`가이드 본문 누락 ${slug}`);return [slug,all[slug]]}));
 
@@ -28,7 +30,13 @@ const extraLinks={
   'spreadsheet-import-guide':['csv-json-converter'],
   'character-byte-limits':['whitespace-remover','cover-letter-helper'],
   'browser-processing-privacy':['background-remover','my-ip','qr-code-generator'],
-  'json-common-errors':['csv-json-converter','url-encoder-decoder']
+  'json-common-errors':['csv-json-converter','url-encoder-decoder'],
+  'annual-leave-calculation':['severance-pay-calculator','salary-calculator','wage-converter','work-countdown'],
+  'unit-conversion-table':['area-converter'],
+  'time-zone-dst-guide':['date-calculator'],
+  'unix-timestamp-guide':['json-formatter'],
+  'px-rem-css-units':['css-clamp-calculator','flexbox-playground'],
+  'qr-code-print-guide':['url-encoder-decoder']
 };
 export const guidesForTool=slug=>Object.entries(insights)
   .filter(([key,item])=>item.tool[0]===slug||(extraLinks[key]||[]).includes(slug))
