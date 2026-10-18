@@ -1,6 +1,7 @@
 import {moneyInsights} from './content-insights-money.mjs';
 import {workInsights} from './content-insights-work.mjs';
 import {lifeInsights} from './content-insights-life.mjs';
+import {extraInsights} from './content-insights-extra.mjs';
 
 // 가이드 목록 순서 = 활용 가이드 페이지와 홈에 노출되는 순서
 const order=[
@@ -10,9 +11,10 @@ const order=[
   'unit-conversion-table','time-zone-dst-guide','pomodoro-technique-guide','qr-code-print-guide',
   'resignation-letter-guide','employment-contract-checklist','document-draft-safety','interview-answer-framework',
   'image-format-guide','background-removal-tips','spreadsheet-import-guide','browser-processing-privacy',
-  'strong-password-guide','json-common-errors','unix-timestamp-guide','px-rem-css-units'
+  'strong-password-guide','json-common-errors','unix-timestamp-guide','px-rem-css-units',
+  'color-hex-rgb-contrast','markdown-syntax-cheatsheet','text-diff-comparison-guide','seo-title-description-guide'
 ];
-const all={...moneyInsights,...workInsights,...lifeInsights};
+const all={...moneyInsights,...workInsights,...lifeInsights,...extraInsights};
 for(const slug of Object.keys(all))if(!order.includes(slug))throw Error(`가이드 순서 누락 ${slug}`);
 export const insights=Object.fromEntries(order.map(slug=>{if(!all[slug])throw Error(`가이드 본문 누락 ${slug}`);return [slug,all[slug]]}));
 
