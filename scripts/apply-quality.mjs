@@ -16,6 +16,14 @@ const cleanHead=html=>html
   .replace(/<div class="layout">/g,'<div class="layout quality-layout">');
 
 const seoOverrides={
+  'wage-converter':{
+    title:'시급 계산기 | 시급·월급·연봉 환산, 주휴수당 포함',
+    description:'시급과 주 근무시간을 입력하면 주휴수당을 포함한 주급·월급·연봉을 계산하고, 월급을 시급으로 역산합니다. 2026년 최저임금 기준 확인에 활용하세요.'
+  },
+  'date-calculator':{
+    title:'날짜 계산기 | 두 날짜 사이 일수·며칠 후 날짜 계산',
+    description:'시작일과 종료일 사이의 일수·주수·평일 수를 계산하고, 오늘부터 N일 후·전 날짜를 구합니다. 양끝 날짜 포함 여부도 선택할 수 있습니다.'
+  },
   'area-converter':{
     title:'평수 계산기 | 제곱미터(㎡) 평 변환·아파트 면적표',
     description:'제곱미터(㎡)와 평을 양방향으로 바로 변환하세요. 59㎡·74㎡·84㎡ 아파트 공급면적과 전용면적을 구분하는 환산표도 함께 확인할 수 있습니다.'
