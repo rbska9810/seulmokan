@@ -1,5 +1,6 @@
 import {extraQuality} from './content-quality-extra.mjs';
 import {guidesForTool} from './content-insights.mjs';
+import {depth} from './content-depth.mjs';
 
 export const coreSlugs=new Set([
   'px-rem-converter','css-gradient-generator','box-shadow-generator','color-converter','meta-tag-preview',
@@ -217,7 +218,8 @@ export const qualityArticle=slug=>{
   const item=quality[slug]||extraQuality[slug];
   if(!item)throw Error(`${slug}: 고유한 품질 안내가 없습니다.`);
   const guides=guidesForTool(slug);
-  return `<h2>이 도구가 필요한 상황</h2><p>${item.why}</p><h2>실제 사용 예시</h2><p>${item.example}</p><h2>결과를 정확히 읽는 방법</h2><ul>${item.details.map(text=>`<li>${text}</li>`).join('')}</ul><h2>완료 전 확인</h2><p>${item.check}</p>${guides.length?`<div class="guide-links"><b>더 자세히 알아보기</b>${guides.map(g=>`<a href="../../insights/${g.slug}/">${g.title} →</a>`).join('')}</div>`:''}`;
+  const deep=depth[slug];
+  return `<h2>이 도구가 필요한 상황</h2><p>${item.why}</p><h2>실제 사용 예시</h2><p>${item.example}</p><h2>결과를 정확히 읽는 방법</h2><ul>${item.details.map(text=>`<li>${text}</li>`).join('')}</ul>${deep?`<h2>계산 방식</h2><p>${deep.how}</p><h2>상황별 계산 사례</h2><ul>${deep.cases.map(text=>`<li>${text}</li>`).join('')}</ul><h2>자주 하는 실수</h2><ul>${deep.mistakes.map(text=>`<li>${text}</li>`).join('')}</ul><h2>자주 묻는 질문</h2>${deep.faq.map(([q,a])=>`<h3>${q}</h3><p>${a}</p>`).join('')}`:''}<h2>완료 전 확인</h2><p>${item.check}</p>${guides.length?`<div class="guide-links"><b>더 자세히 알아보기</b>${guides.map(g=>`<a href="../../insights/${g.slug}/">${g.title} →</a>`).join('')}</div>`:''}`;
 };
 
 export {insights} from './content-insights.mjs';

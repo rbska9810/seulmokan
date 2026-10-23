@@ -3,6 +3,7 @@ import path from 'node:path';
 import {coreSlugs,qualityArticle,insights} from './content-quality.mjs';
 import {extraQuality} from './content-quality-extra.mjs';
 import {guidesForTool,insightText} from './content-insights.mjs';
+import {depth} from './content-depth.mjs';
 
 const siteUpdated='2026-10-13';
 const koDate=d=>{const [y,m,day]=d.split('-').map(Number);return `${y}년 ${m}월 ${day}일`};
@@ -87,7 +88,7 @@ export function applyQuality({root,base,tools,infoPages,notes,guideDetails,esc})
     html=html.replace(/<meta name="description" content="[^"]*">/,`<meta name="description" content="${esc(metaDescription)}">`);
     const guide=guideDetails[slug];
     const article=isCore
-      ? `<article class="content-card tool-guide quality-article" data-guide="quality"><h2>${esc(title)} 사용 방법</h2><p>${esc(guide[0])}</p><h2>결과에서 확인할 내용</h2><p>${esc(guide[1])}</p>${qualityArticle(slug)}${notes[slug]||''}<h2>사용 전 꼭 확인하세요</h2><p>${esc(guide[2])}</p>${extraQuality[slug]?'<p class="editorial">도구 설명 최종 수정: 2026년 10월 9일</p>':''}</article>`
+      ? `<article class="content-card tool-guide quality-article" data-guide="quality"><h2>${esc(title)} 사용 방법</h2><p>${esc(guide[0])}</p><h2>결과에서 확인할 내용</h2><p>${esc(guide[1])}</p>${qualityArticle(slug)}${notes[slug]||''}<h2>사용 전 꼭 확인하세요</h2><p>${esc(guide[2])}</p>${depth[slug]?'<p class="editorial">도구 설명 최종 수정: 2026년 10월 23일</p>':extraQuality[slug]?'<p class="editorial">도구 설명 최종 수정: 2026년 10월 9일</p>':''}</article>`
       : `<article class="content-card tool-guide lab-article" data-guide="lab"><div class="lab-notice"><b>실험실 기능</b><p>이 페이지는 기능을 유지하되 검색 색인과 광고 대상에서 제외했습니다. 사용 의견을 반영해 설명과 검증 기준을 보강한 뒤 핵심 도구로 전환합니다.</p></div><h2>${esc(title)} 사용 방법</h2><ol><li>${esc(guide[0])}</li><li>${esc(guide[1])}</li></ol><h2>사용 전 확인</h2><p>${esc(guide[2])}</p>${notes[slug]||''}</article>`;
     html=html.replace(/<article class="content-card tool-guide"[\s\S]*?<\/article>/,article);
     const sameCategory=tools.filter(t=>t[0]!==slug&&coreSlugs.has(t[0])&&t[2]===category);
@@ -143,7 +144,7 @@ export function applyQuality({root,base,tools,infoPages,notes,guideDetails,esc})
     fs.writeFileSync(file,cleanHead(fs.readFileSync(file,'utf8')).replace(/최종 수정일: 2026년 9월 13일/g,'최종 수정일: 2026년 9월 20일'));
   }
   const urls=[base,...Object.keys(infoPages).map(x=>base+x+'/'),base+'insights/',...Object.keys(insights).map(x=>base+'insights/'+x+'/'),base+'updates/',...tools.filter(t=>coreSlugs.has(t[0])).map(t=>base+'tools/'+t[0]+'/')];
-  fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>{const slug=u.match(/\/tools\/([^/]+)\/$/)?.[1];const guideSlug=u.match(/\/insights\/([^/]+)\/$/)?.[1];const date=guideSlug?insights[guideSlug].updated:u===base||u===base+'updates/'||u===base+'insights/'||u===base+'about/'||slug&&guidesForTool(slug).length?siteUpdated:slug&&extraQuality[slug]?'2026-10-09':'2026-10-03';return `  <url><loc>${u}</loc><lastmod>${date}</lastmod></url>`}).join('\n')+'\n</urlset>\n');
+  fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>{const slug=u.match(/\/tools\/([^/]+)\/$/)?.[1];const guideSlug=u.match(/\/insights\/([^/]+)\/$/)?.[1];const date=slug&&depth[slug]?'2026-10-23':guideSlug?insights[guideSlug].updated:u===base||u===base+'updates/'||u===base+'insights/'||u===base+'about/'||slug&&guidesForTool(slug).length?siteUpdated:slug&&extraQuality[slug]?'2026-10-09':'2026-10-03';return `  <url><loc>${u}</loc><lastmod>${date}</lastmod></url>`}).join('\n')+'\n</urlset>\n');
 
   const htmlFiles=[];const walk=dir=>{for(const item of fs.readdirSync(dir,{withFileTypes:true})){if(['.git','node_modules'].includes(item.name))continue;const full=path.join(dir,item.name);if(item.isDirectory())walk(full);else if(item.name.endsWith('.html'))htmlFiles.push(full);}};walk(root);
   for(const file of htmlFiles){let html=cleanHead(fs.readFileSync(file,'utf8'));fs.writeFileSync(file,html);}
