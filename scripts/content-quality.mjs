@@ -10,13 +10,13 @@ export const coreSlugs=new Set([
   'markdown-preview','csv-json-converter','text-diff-checker','list-to-excel','dday-calculator',
   'korean-age-calculator','percentage-calculator','salary-calculator','qr-code-generator','vat-calculator',
   'loan-calculator','compound-interest-calculator','wage-converter','date-calculator','timezone-converter',
-  'severance-pay-calculator','area-converter','my-ip','pomodoro-timer','work-countdown','ladder-game',
-  'unit-converter','random-number-generator','password-generator','nickname-generator','random-wheel',
-  'dice-coin','unix-timestamp-converter','lunch-worldcup',
+  'severance-pay-calculator','area-converter','my-ip','pomodoro-timer','work-countdown',
+  'unit-converter','password-generator',
+  'unix-timestamp-converter','lunch-worldcup',
   'buy-or-not-calculator','resignation-letter-maker','power-of-attorney-maker','simple-receipt-maker',
   'transaction-statement-maker','certified-content-letter-maker','employment-contract-maker','message-template-bank',
   'interview-question-planner','cover-letter-helper','one-minute-introduction-builder',
-  'typing-speed-test'
+  
 ]);
 
 const quality={
