@@ -3,10 +3,10 @@ import {guidesForTool} from './content-insights.mjs';
 import {depth} from './content-depth.mjs';
 
 export const coreSlugs=new Set([
-  'px-rem-converter','css-gradient-generator','box-shadow-generator','color-converter','meta-tag-preview',
-  'flexbox-playground','css-clamp-calculator','image-base64-converter','image-compressor','image-cropper',
-  'background-remover','psd-image-converter','character-byte-counter','whitespace-remover','case-converter',
-  'duplicate-line-remover','json-formatter','url-encoder-decoder','html-entity-converter','slug-generator',
+  'px-rem-converter','color-converter','meta-tag-preview',
+  'css-clamp-calculator','image-base64-converter','image-compressor','image-cropper',
+  'background-remover','psd-image-converter','character-byte-counter','case-converter',
+  'json-formatter','url-encoder-decoder',
   'markdown-preview','csv-json-converter','text-diff-checker','list-to-excel','dday-calculator',
   'korean-age-calculator','percentage-calculator','salary-calculator','qr-code-generator','vat-calculator',
   'loan-calculator','compound-interest-calculator','wage-converter','date-calculator','timezone-converter',

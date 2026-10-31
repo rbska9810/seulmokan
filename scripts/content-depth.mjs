@@ -1,4 +1,5 @@
 import {depth2} from './content-depth-2.mjs';
+import {depth3} from './content-depth-3.mjs';
 // 핵심 도구 페이지에 추가하는 심화 안내(계산 방식·사례·실수·FAQ).
 // 수치 예시는 모두 직접 계산해 검산한 값이며, 제도 기준은 2026년 10월 기준입니다.
 export const depth={
@@ -244,4 +245,4 @@ export const depth={
     ]
   }
 };
-Object.assign(depth,depth2);
+Object.assign(depth,depth2,depth3);
